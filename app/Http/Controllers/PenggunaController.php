@@ -81,4 +81,13 @@ class PenggunaController extends Controller
         $pengguna->update($data);
         return redirect()->route('pengguna.index')->with('success',);
     }
+
+    public function destroy($id){
+        $pengguna = Pengguna::findOrFail($id);
+        if ($pengguna->file_upload && Storage::disk('public')->exists($pengguna->file_upload)) {
+            Storage::disk('public/')->delete('public/'.$pengguna->file_upload);
+        }
+        $pengguna->delete();
+        return redirect()->route('penggunas.index')->with('success','Pengguna Berhasil Dihapus');
+    }
 }
