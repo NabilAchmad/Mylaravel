@@ -83,7 +83,7 @@
                         </table>
                     </div>
 
-                    <div class="mt-4 px-6">
+                    <div class="mt-4 px-6 flex justify-end">
                         {{ $penggunas->links() }}
                     </div>
                 </div>
