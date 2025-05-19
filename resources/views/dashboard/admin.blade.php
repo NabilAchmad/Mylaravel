@@ -16,8 +16,6 @@
                         <h3 class="text-lg font-semibold mb-4">Selamat datang, Admin!</h3>
                         <p class="mb-6">Ini adalah panel admin. Anda bisa mengelola pengguna, melihat statistik, dll.
                         </p>
-
-
                         <a href="{{ route('penggunas.index') }}"
                             class="bg-blue-600 dark:bg-blue-500 hover:bg-blue-700 text-white px-4 py-2 rounded-lg transition duration-200">
                             Manajemen Pengguna
