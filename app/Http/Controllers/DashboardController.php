@@ -11,8 +11,8 @@ class DashboardController extends Controller
     //
     public function index()
     {
-        $user = auth::user();
-        if($user||!isset($user->role)){
+        $user = Auth::user();
+        if(!$user||!isset($user->role)){
             // code
             abort(403, 'Tidak diizinkan');
         }
