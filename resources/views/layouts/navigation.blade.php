@@ -15,9 +15,11 @@
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('penggunas.index')" :active="request()->routeIs('penggunas.*')">
-                        {{ __('Pengguna') }}
-                    </x-nav-link>
+                    @if(Auth::user()->role === 'admin')
+                        <x-nav-link :href="route('penggunas.index')" :active="request()->routeIs('penggunas.*')">
+                            {{ __('Pengguna') }}
+                        </x-nav-link>
+                    @endif
                 </div>
             </div>
 
