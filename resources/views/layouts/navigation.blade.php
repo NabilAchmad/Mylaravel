@@ -19,9 +19,19 @@
                         <x-nav-link :href="route('penggunas.index')" :active="request()->routeIs('penggunas.*')">
                             {{ __('Pengguna') }}
                         </x-nav-link>
+                        <x-nav-link :href="route('books.index')" :active="request()->routeIs('books.*')">
+                            {{ __('Book') }}
+                        </x-nav-link>
+                        <x-nav-link :href="route('sales.index')" :active="request()->routeIs('sales.*')">
+                            {{ __('Sale') }}
+                        </x-nav-link>
+                        {{-- <x-nav-link :href="route('books.index')" :active="request()->routeIs('penggunas.*')">
+                            {{ __('Book') }}
+                        </x-nav-link> --}}
                     @endif
                 </div>
             </div>
+            
 
             <!-- Settings Dropdown -->
             <div class="hidden sm:flex sm:items-center sm:ms-6">

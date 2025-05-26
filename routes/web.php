@@ -10,6 +10,11 @@ use App\Http\Controllers\dosen\DosentiController;
 use App\Http\Controllers\MahasiswapnpController;
 use App\Http\Controllers\TeknisiController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\BookController;
+use App\Http\Controllers\ReportController;
+use App\Http\Controllers\SaleController;
+
+// use App\Http\Controllers\DosenpnpController;
 
 
 //default routing
@@ -298,15 +303,23 @@ Route::delete('pengguna/{id}', [PenggunaController::class, 'destroy'])->name('pe
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
-    Route::prefix('profile')->group(function(){
+    Route::prefix('profile')->group(function () {
         Route::get('/', [ProfileController::class, 'edit'])->name('profile.edit');
         Route::patch('/', [ProfileController::class, 'update'])->name('profile.update');
         Route::delete('/', [ProfileController::class, 'destroy'])->name('profile.destroy');
     });
 
     // admin auth
-    Route::middleware(['auth', 'admin'])->group(function(){
+    Route::middleware(['auth', 'admin'])->group(function () {
         Route::resource('penggunas', PenggunaController::class);
+        Route::resource('books', BookController::class);
+        Route::resource('sales', SaleController::class);
+        Route::get('/publishing-reports', [ReportController::class, 'publishingIndex'])->name('publishing.reports.index');
+        Route::get('/sales-reports', [ReportController::class, 'salesIndex'])->name('sales.reports.index');
+        Route::get('/laporan/penerbitan/pdf', [ReportController::class, 'exportPenerbitanPdf'])->name('laporan.penerbitan.pdf');
+        Route::get('/laporan/penjualan/pdf', [ReportController::class, 'exportPenjualanPdf'])->name('laporan.penjualan.pdf');
+        Route::get('/laporan/penerbitan/excel', [ReportController::class, 'exportPenerbitanExcel'])->name('laporan.penerbitan.excel');
+        Route::get('/laporan/penjualan/excel', [ReportController::class, 'exportPenjualanExcel'])->name('laporan.penjualan.excel');
     });
 });
 
@@ -321,6 +334,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
 //     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
 //     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 // });
+
 
 
 
