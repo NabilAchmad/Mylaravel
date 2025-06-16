@@ -25,9 +25,9 @@
                         <x-nav-link :href="route('sales.index')" :active="request()->routeIs('sales.*')">
                             {{ __('Sale') }}
                         </x-nav-link>
-                        {{-- <x-nav-link :href="route('books.index')" :active="request()->routeIs('penggunas.*')">
-                            {{ __('Book') }}
-                        </x-nav-link> --}}
+                        <x-nav-link :href="route('todos.index')" :active="request()->routeIs('Todo.*')">
+                            {{ __('To Do') }}
+                        </x-nav-link>
                     @endif
                 </div>
             </div>

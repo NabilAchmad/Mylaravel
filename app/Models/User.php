@@ -11,7 +11,7 @@ use Illuminate\Notifications\Notifiable;
 
 
 // implements MustVerifyEmail
-class User extends Authenticatable 
+class User extends Authenticatable
 {
     /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory, Notifiable;

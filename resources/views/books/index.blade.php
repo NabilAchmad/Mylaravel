@@ -19,10 +19,10 @@
         }
         .card-header {
             border-radius: 15px 15px 0 0 !important;
-            background: linear-gradient(45deg, #4e73df, #224abe);
+            background: linear-gradient(45deg, #FF6B6B, #FF8E53);
         }
         .table-hover tbody tr:hover {
-            background-color: rgba(78, 115, 223, 0.1);
+            background-color: rgba(255, 107, 107, 0.1);
             transition: all 0.3s ease;
         }
         .btn-action {
@@ -48,17 +48,17 @@
         .page-item .page-link {
             border-radius: 8px;
             border: none;
-            color: #4e73df;
+            color: #FF6B6B;
         }
         .page-item.active .page-link {
-            background: linear-gradient(45deg, #4e73df, #224abe);
+            background: linear-gradient(45deg, #FF6B6B, #FF8E53);
         }
         .empty-state {
             padding: 3rem;
             color: #6c757d;
         }
         .empty-state i {
-            color: #4e73df;
+            color: #FF6B6B;
         }
         .btn-light {
             background: rgba(255, 255, 255, 0.1);
@@ -69,7 +69,21 @@
             background: rgba(255, 255, 255, 0.2);
         }
         body {
-            background: #f8f9fc;
+            background: linear-gradient(to bottom, #FF8C64, #FF6B6B, #2C3E50);
+            background-attachment: fixed;
+            background-size: cover;
+        }
+        .dropdown-menu {
+            border-radius: 10px;
+            border: none;
+            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+        }
+        .dropdown-item {
+            padding: 0.5rem 1.5rem;
+            transition: all 0.3s ease;
+        }
+        .dropdown-item:hover {
+            background-color: rgba(255, 107, 107, 0.1);
         }
     </style>
 </head>
@@ -78,19 +92,28 @@
     <div class="container py-5">
         <div class="card">
             <div class="card-header text-white d-flex justify-content-between align-items-center py-3">
-                <h2 class="h4 mb-0 fw-bold"><i class="fas fa-book me-2"></i>Daftar Buku</h2>
-                <a href="{{ route('books.create') }}" class="btn btn-light">
-                    <i class="fas fa-plus me-2"></i>Tambah Buku Baru
-                </a>
-                <a href="{{ route('publishing.reports.index') }}" class="btn btn-light">
-                    <i class="fas fa-file-pdf me-2"></i>Laporan publishing
-                </a>
-                <a href="{{ route('laporan.penerbitan.pdf') }}" class="btn btn-light">
-                    <i class="fas fa-file-pdf me-2"></i> Cetak PDF penerbitan
-                </a>
-                <a href="{{ route('laporan.penerbitan.excel') }}" class="btn btn-light">
-                    <i class="fas fa-file-excel me-2"></i> Cetak Excel penerbitan
-                </a>
+                <h2 class="h4 mb-0 fw-bold"><i class="fas fa-volleyball-ball me-2"></i>Daftar Buku</h2>
+                <div class="d-flex gap-2">
+                    <a href="{{ route('books.create') }}" class="btn btn-light">
+                        <i class="fas fa-plus me-2"></i>Tambah Buku Baru
+                    </a>
+                    <div class="dropdown">
+                        <button class="btn btn-light dropdown-toggle" type="button" id="reportDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fas fa-file-alt me-2"></i>Laporan
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="reportDropdown">
+                            <li><a class="dropdown-item" href="{{ route('laporan.penerbitan.pdf') }}">
+                                <i class="fas fa-file-pdf me-2"></i>Cetak PDF
+                            </a></li>
+                            <li><a class="dropdown-item" href="{{ route('laporan.penerbitan.excel') }}">
+                                <i class="fas fa-file-excel me-2"></i>Cetak Excel
+                            </a></li>
+                        </ul>
+                    </div>
+                    <a href="{{ route('dashboard') }}" class="btn btn-light">
+                        <i class="fas fa-home me-2"></i>Beranda
+                    </a>
+                </div>
             </div>
             <div class="card-body p-4">
                 @if(session('success'))
@@ -146,7 +169,7 @@
                                 <tr>
                                     <td colspan="7">
                                         <div class="empty-state text-center">
-                                            <i class="fas fa-book-open fa-4x mb-3"></i>
+                                            <i class="fas fa-volleyball-ball fa-4x mb-3"></i>
                                             <h5 class="mb-3">Belum ada buku yang diterbitkan</h5>
                                             <p class="text-muted mb-0">Mulai tambahkan buku pertama Anda sekarang!</p>
                                         </div>
@@ -167,4 +190,4 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
-</html>
+</html> 
